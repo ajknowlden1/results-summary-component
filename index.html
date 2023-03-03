@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <title>Frontend Mentor | Results summary component</title>
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="jquery-3.6.3.js" type="text/javascript"></script>
+    <script>
+      $.getJSON("/data.json").then((data) => {
+        data.forEach((element) => {
+          $(".result-container").append(
+            `<div class="summary-item"><img src=${element.icon} alt="Item category icon"><h2 class="category-name">${element.category}</h2><p class="score"><strong>${element.score}</strong>  / 100</p></div>`
+          );
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="result">
+        <h2 class="result-header">Your Result</h2>
+        <div class="result-score">
+          <h2 class="result-score-number">76</h2>
+          <p>of 100</p>
+        </div>
+        <h1 class="result-great">Great</h1>
+        <p class="result-score-detail">
+          You scored higher than 65% of the people who have taken these tests.
+        </p>
+      </div>
+      <div class="summary">
+        <h2>Summary</h2>
+        <div class="result-container"></div>
+        <button class="btn-continue">Continue</button>
+      </div>
+    </div>
+  </body>
+</html>
